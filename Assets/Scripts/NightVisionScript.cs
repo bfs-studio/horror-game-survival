@@ -16,12 +16,20 @@ public class NightVisionScript : MonoBehaviour
         cam = GameObject.Find("FirstPersonCharacter").GetComponent<Camera>();
     }
 
+    private void OnEnable()
+    {
+        if (zoomBar != null)
+        {
+            zoomBar.fillAmount = 0.6f;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            if(cam.fieldOfView > 10)
+            if (cam.fieldOfView > 10)
             {
                 cam.fieldOfView -= 5;
                 zoomBar.fillAmount = cam.fieldOfView / 100;
